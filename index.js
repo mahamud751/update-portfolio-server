@@ -25,6 +25,7 @@ async function run() {
         await client.connect()
         const database = client.db('portfolio')
         const projectsCollection = database.collection('projects')
+        const programsCollection = database.collection('projects')
     
 
 
@@ -38,6 +39,11 @@ async function run() {
             const id = req.params.id
             const query = { _id: ObjectId(id) }
             const result = await projectsCollection.findOne(query)
+            res.json(result)
+        })
+        app.get('/programs', async (req, res) => {
+            const cursor = programsCollection.find({})
+            const result = await cursor.toArray()
             res.json(result)
         })
 
