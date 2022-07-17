@@ -25,7 +25,7 @@ async function run() {
         await client.connect()
         const database = client.db('portfolio')
         const projectsCollection = database.collection('projects')
-        const programsCollection = database.collection('projects')
+        const programsCollection = database.collection('programs')
     
 
 
