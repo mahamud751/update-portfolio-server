@@ -5,10 +5,7 @@ require('dotenv').config()
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express()
 
-
-
 const port = process.env.PORT || 5000
-
 
 
 app.use(cors())
@@ -26,13 +23,13 @@ async function run() {
         const database = client.db('portfolio')
         const projectsCollection = database.collection('projects')
         const programsCollection = database.collection('programs')
-    
 
 
-   
+
+
         app.get('/projects', async (req, res) => {
-            const cursor = projectsCollection.find({})
-            const result = await cursor.toArray()
+            const result = await projectsCollection.find().toArray()
+
             res.json(result)
         })
         app.get('/projects/:id', async (req, res) => {
